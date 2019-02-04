@@ -22,7 +22,7 @@ module VagrantPlugins
 
           hostname = env[:machine].config.ignition.hostname
           ip = env[:machine].config.ignition.ip
-          insert_insecure_key = = env[:machine].config.ignition.insert_insecure_key
+          insert_insecure_key = env[:machine].config.ignition.insert_insecure_key
 
           vmdk_gen(config_path, drive_name, drive_root, hostname, ip, env, insert_insecure_key)
 
