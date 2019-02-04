@@ -21,7 +21,7 @@ end
 
 HOSTNAME_REGEX = /^(?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?$/
 
-def merge_ignition(ignition_path, hostname, ip, env)
+def merge_ignition(ignition_path, hostname, ip, env, insert_insecure_key)
   if !ignition_path.nil?
     ign_file = File.new(ignition_path, "rb")
     config = JSON.parse(File.read(ign_file), :symbolize_names => true)
