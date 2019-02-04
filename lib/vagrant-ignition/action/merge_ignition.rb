@@ -50,13 +50,15 @@ def merge_ignition(ignition_path, hostname, ip, env)
   end
 
   # Handle ssh key
-  config[:passwd] ||= {:users => []}
-  config[:passwd][:users] ||= []
-  if config[:passwd][:users].select {|user| user[:name] == "core"} != []
-    config[:passwd][:users].select{|user| user[:name] == "core"}[0][:sshAuthorizedKeys] ||= []
-    config[:passwd][:users].select{|user| user[:name] == "core"}[0][:sshAuthorizedKeys] += [VAGRANT_INSECURE_KEY]
-  else
-    config[:passwd][:users] += [ssh_entry()]
+  if insert_insecure_key
+    config[:passwd] ||= {:users => []}
+    config[:passwd][:users] ||= []
+    if config[:passwd][:users].select {|user| user[:name] == "core"} != []
+      config[:passwd][:users].select{|user| user[:name] == "core"}[0][:sshAuthorizedKeys] ||= []
+      config[:passwd][:users].select{|user| user[:name] == "core"}[0][:sshAuthorizedKeys] += [VAGRANT_INSECURE_KEY]
+    else
+      config[:passwd][:users] += [ssh_entry()]
+    end
   end
 
   File.open(ignition_path + ".merged","wb") do |f|

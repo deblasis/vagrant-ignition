@@ -30,6 +30,8 @@ Options:
 
 `config.ignition.ip`: Set to desired ip of eth1 (only applies if a private network is being created)
 
+`config.ignition.insert_insecure_key`: Set to false if you want to avoid inserting the Vagrant insecure key (you should add your own key, otherwise you won't be able to login via ssh)
+
 ## Contributing
 
 Bug reports are welcome at https://issues.coreos.com/.
