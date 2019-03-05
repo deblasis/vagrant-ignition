@@ -6,9 +6,10 @@ def vmdk_gen(ignition_path, drive_name, drive_root, hostname, ip, env, insert_in
   # This ensures changes the directory to the drive_root so the img and
   # vmdk can be generated in the same directory as well as avoid some
   # path name bugs
-  orig_dir = Dir.pwd
-  Dir.chdir(drive_root)
-  vmdk_name = drive_name + ".vmdk"
+  #orig_dir = Dir.pwd
+  #Dir.chdir(drive_root)
+  #vmdk_name = drive_name + ".vmdk"
+  vmdk_name = "#{File.join(drive_root, (drive_name + ".vmdk"))}"
   config_drive = drive_name + ".img"
   merge_ignition(ignition_path, hostname, ip, env, insert_insecure_key)
   if !ignition_path.nil?
@@ -21,5 +22,5 @@ def vmdk_gen(ignition_path, drive_name, drive_root, hostname, ip, env, insert_in
     File.delete(vmdk_name)
   end
   env[:machine].provider.driver.execute("internalcommands", "createrawvmdk", "-filename", "#{vmdk_name}", "-rawdisk", "#{config_drive}")
-  Dir.chdir(orig_dir)
+  #Dir.chdir(orig_dir)
 end

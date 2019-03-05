@@ -5,9 +5,9 @@ require "vagrant-ignition/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "vagrant-ignition"
-  spec.version       = "0.0.4"
-  spec.authors       = ["Alexander Pavel", "Alex Crawford"]
-  spec.email         = ["alex.pavel@coreos.com", "alex.crawford@coreos.com"]
+  spec.version       = "0.0.5"
+  spec.authors       = ["Alexander Pavel", "Alex Crawford", "Alessandro De Blasis"]
+  spec.email         = ["alex.pavel@coreos.com", "alex.crawford@coreos.com", "alex@deblasis.net"]
 
   spec.description   = %q{"A Vagrant plugin for VirtualBox based machines that creates and mounts an Ignition configuration disk for consumption by Ignition"}
   spec.summary       = spec.description

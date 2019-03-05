@@ -9,7 +9,7 @@ Build the app using:
 
 And install it with:
 
-    $ vagrant plugin install vagrant-ignition-0.0.4.gem
+    $ vagrant plugin install vagrant-ignition-0.0.5.gem
 
 ## Usage
 To use this plugin, a couple of config options must be set in a project's Vagrantfile config section.
@@ -31,6 +31,8 @@ Options:
 `config.ignition.ip`: Set to desired ip of eth1 (only applies if a private network is being created)
 
 `config.ignition.insert_insecure_key`: Set to false if you want to avoid inserting the Vagrant insecure key (you should add your own key, otherwise you won't be able to login via ssh)
+
+`remove_after_provision`: Set to true (default) to remove the storage drive added by this plugin to run ignition. Useful when exporting boxes as base boxes and to avoid cluttered and buggy Virtualbox.xml
 
 ## Contributing
 

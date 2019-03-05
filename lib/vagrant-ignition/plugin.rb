@@ -15,6 +15,12 @@ module VagrantPlugins
         require_relative "action/setup_ignition"
         hook.after VagrantPlugins::ProviderVirtualBox::Action::Import, Action::SetupIgnition
       end
+
+      action_hook(:clean_ignition, :machine_action_halt) do |hook|
+        require_relative "action/clean"
+        
+        hook.after Vagrant::Action::Builtin::GracefulHalt, Action::Clean
+      end
     end
   end
 end
